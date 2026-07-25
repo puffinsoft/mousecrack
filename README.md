@@ -14,6 +14,10 @@ This project aims to test the abilities of deep-learning for mouse imitation.
 
 https://github.com/user-attachments/assets/ed3339c3-c414-4605-b214-8acf03aca1c1
 
+<p align="center">
+    <i>Clearly, it's not perfect. But this is v0.1.0. Still a lot of fun stuff to try on the model side :).</i>
+</p>
+
 ---
 
 ### Installation
