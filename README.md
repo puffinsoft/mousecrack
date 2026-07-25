@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/banner.png" width="400" />
+    <img src="https://github.com/puffinsoft/mousecrack/raw/master/assets/banner.png" width="400" />
 </p>
 
 <p align="center">
@@ -36,10 +36,14 @@ Available as an SDK (for developers) and CLI (for agents).
 #### SDK
 
 ```js
-import { move, list } from 'mousecrack';
+import { move, steps } from 'mousecrack';
 
 await move(100, 500);
-await list(100, 500);
+
+// or alternatively...
+const from = { x: 100, y: 200 }
+const to = {x: 200, y: 400 }
+await steps(from, to);
 ```
 
 #### CLI
