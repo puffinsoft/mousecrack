@@ -38,19 +38,26 @@ Available as an SDK (for developers) and CLI (for agents).
 ```js
 import { move, steps } from 'mousecrack';
 
-await move(100, 500);
+await move(200, 400);
 
 // or alternatively...
 const from = { x: 100, y: 200 }
-const to = {x: 200, y: 400 }
+const to = { x: 200, y: 400 }
 await steps(from, to);
+
+// [
+//   { x: 100, y: 200, t: 0 },
+//   { x: 95, y: 202, t: 10.528131778472712 },
+//   { x: 90, y: 210, t: 21.040190062833986 },
+//   { x: 81, y: 223, t: 31.892832399406224 },
+//   ...
 ```
 
 #### CLI
 
 ```bash
-mousecrack move 100 500
-mousecrack list 100 500
+mousecrack move 200 400 # (x, y)
+mousecrack steps 100 200 200 400 # from (x, y), to (x, y)
 ```
 
 <details>
