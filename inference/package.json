@@ -1,0 +1,36 @@
+{
+  "name": "mousecrack",
+  "version": "0.1.0",
+  "description": "Human mouse imitation with deep learning.",
+  "keywords": [
+    "mouse-movement"
+  ],
+  "homepage": "https://github.com/puffinsoft/mousecrack#readme",
+  "bugs": {
+    "url": "https://github.com/puffinsoft/mousecrack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puffinsoft/mousecrack.git"
+  },
+  "license": "MIT",
+  "author": "ColonelParrot",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "prepack": "node -e \"require('fs').copyFileSync('../README.md', 'README.md')\""
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "robotjs": "^0.8.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  },
+  "files": [
+    "/dist/**/*"
+  ]
+}
