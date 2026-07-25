@@ -16,7 +16,10 @@
   "license": "MIT",
   "author": "ColonelParrot",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "bin": {
+    "mousecrack": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsup",
     "typecheck": "tsc --noEmit",
@@ -24,6 +27,7 @@
   },
   "dependencies": {
     "commander": "^15.0.0",
+    "onnxruntime-node": "^1.27.0",
     "robotjs": "^0.8.0"
   },
   "devDependencies": {
@@ -32,5 +36,9 @@
   },
   "files": [
     "/dist/**/*"
-  ]
+  ],
+  "overrides": {
+    "adm-zip": "0.6.0",
+    "esbuild": "0.28.1"
+  }
 }
