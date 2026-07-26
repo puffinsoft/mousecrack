@@ -105,6 +105,7 @@ export async function steps(start: Position, end: Position): Promise<Step[]> {
 export async function move(x: number, y: number) {
     const session = await getSession();
     const start = robot.getMousePos();
+    
     const rawPath = await generatePath({
         session,
         start: { x: start.x, y: start.y },
@@ -121,9 +122,3 @@ export async function move(x: number, y: number) {
         prevT = point.t;
     }
 }
-
-steps({
-    x: 100, y: 200
-}, {
-    x: 200, y: 400
-}).then(console.log)
