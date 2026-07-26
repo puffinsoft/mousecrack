@@ -78,6 +78,8 @@ codex plugin add move-mouse@mousecrack
 
 </details>
 
+---
+
 ### How does it work?
 
 Mousecrack treats mouse prediction like a time forecasting problem.

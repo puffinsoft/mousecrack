@@ -1,0 +1,9 @@
+{
+    "name": "move-mouse",
+    "description": "Synthesize organically varied, human-like mouse movement.",
+    "version": "0.1.0",
+    "author": {
+        "name": "ColonelParrot"
+    },
+    "skills": "./skills/"
+}

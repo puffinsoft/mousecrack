@@ -1,0 +1,13 @@
+{
+    "name": "mousecrack",
+    "owner": {
+        "name": "ColonelParrot"
+    },
+    "plugins": [
+        {
+            "name": "move-mouse",
+            "source": "./",
+            "description": "Synthesize organically varied, human-like mouse movement."
+        }
+    ]
+}
