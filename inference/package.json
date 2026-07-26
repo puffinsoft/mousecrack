@@ -1,7 +1,7 @@
 {
   "name": "mousecrack",
   "version": "0.1.0",
-  "description": "Human mouse imitation with deep learning.",
+  "description": "Synthesize organically varied, human-like mouse movement.",
   "keywords": [
     "mouse-movement"
   ],
