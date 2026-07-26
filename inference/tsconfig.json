@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "ignoreDeprecations": "6.0",
+        "allowImportingTsExtensions": true
+    }
+}

@@ -10,6 +10,6 @@ export default defineConfig({
     target: "es2022",
     platform: "node",
     clean: true,
-    dts: false,
+    dts: true,
     define: { __VERSION__: JSON.stringify(version) },
 });

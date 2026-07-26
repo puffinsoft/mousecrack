@@ -1,6 +1,6 @@
 {
   "name": "mousecrack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Synthesize organically varied, human-like mouse movement.",
   "keywords": [
     "mouse-movement"
@@ -16,6 +16,7 @@
   "license": "MIT",
   "author": "ColonelParrot",
   "type": "module",
+  "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "bin": {
     "mousecrack": "dist/cli.js"
