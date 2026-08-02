@@ -12,6 +12,7 @@ tf.get_logger().setLevel("ERROR")
 import tensorflow_probability as tfp
 import tf_keras
 from config import model_config
+from tf_keras.callbacks import ModelCheckpoint
 from tf_keras.layers import LSTM, Dense, Input, Masking
 from tf_keras.models import Sequential
 from tf_keras.preprocessing.sequence import pad_sequences
@@ -116,12 +117,20 @@ model = Sequential(
 model.compile(optimizer=tf_keras.optimizers.Adam(learning_rate=0.0005), loss=mdn_loss)
 model.summary()
 
+checkpoint_cb = ModelCheckpoint(
+    filepath="model_checkpoint_epoch_{epoch:03d}.h5",
+    save_weights_only=True,
+    period=25,
+    verbose=1
+)
+
 history = model.fit(
     X_train,
     Y_train,
     epochs=model_config["epochs"],
     batch_size=model_config["batch_size"],
     validation_split=0.1,
+    callbacks=[checkpoint_cb]
 )
 
 model.save_weights(model_config["pytorch_model"])
