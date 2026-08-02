@@ -6,19 +6,33 @@ import { join } from 'path';
 import { model_config } from './config.ts';
 import { smoothPath, sampleFromMDN, sleep, paramsSize } from './util.ts';
 
-const modelPath = join(import.meta.dirname, model_config.onnxModel);
-
-let sessionPromise: Promise<ort.InferenceSession> | null = null;
-function getSession() {
-    if (!sessionPromise) {
-        sessionPromise = ort.InferenceSession.create(modelPath);
-    }
-    return sessionPromise;
-}
+import { ModelType } from './config.ts';
+export { ModelType } from './config.ts';
 
 export interface Position {
     x: number;
     y: number;
+}
+
+
+export interface Step {
+    x: number;
+    y: number;
+    t: number;
+}
+
+const sessions: Record<ModelType, Promise<ort.InferenceSession> | null> = {
+    [ModelType.STANDARD]: null,
+    [ModelType.LITE]: null
+}
+
+function getSession(type?: ModelType) {
+    const realType = type ?? ModelType.STANDARD;
+    if (!sessions[realType]) {
+        const modelPath = join(import.meta.dirname, model_config.modelPaths[realType])
+        sessions[realType] = ort.InferenceSession.create(modelPath)
+    }
+    return sessions[realType];
 }
 
 interface StepsParamsInterface {
@@ -26,12 +40,6 @@ interface StepsParamsInterface {
     start: Position;
     end: Position;
     maxSteps?: number;
-}
-
-export interface Step {
-    x: number;
-    y: number;
-    t: number;
 }
 
 async function generatePath({ session, start, end, maxSteps = 500 }: StepsParamsInterface): Promise<Step[]> {
@@ -93,8 +101,8 @@ async function generatePath({ session, start, end, maxSteps = 500 }: StepsParams
     return path;
 }
 
-export async function steps(start: Position, end: Position): Promise<Step[]> {
-    const session = await getSession();
+export async function steps(start: Position, end: Position, type?: ModelType): Promise<Step[]> {
+    const session = await getSession(type);
     return generatePath({
         session,
         start,
@@ -102,8 +110,8 @@ export async function steps(start: Position, end: Position): Promise<Step[]> {
     })
 }
 
-export async function move(x: number, y: number) {
-    const session = await getSession();
+export async function move(x: number, y: number, type?: ModelType) {
+    const session = await getSession(type);
     const start = robot.getMousePos();
 
     const rawPath = await generatePath({
