@@ -78,7 +78,7 @@ codex plugin add move-mouse@mousecrack
 
 </details>
 
-#### 📌 Choosing Models
+### 📌 Choosing Models
 
 To support all hardware systems, we develop two models- Standard (2x128 LSTM) and Lite (2x64 LSTM).
 
