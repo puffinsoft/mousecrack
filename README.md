@@ -78,6 +78,33 @@ codex plugin add move-mouse@mousecrack
 
 </details>
 
+#### 📌 Choosing Models
+
+To support all hardware systems, we develop two models- Standard (2x128 LSTM) and Lite (2x64 LSTM).
+
+Append `lite` or `standard` as a parameter to each CLI command to choose:
+
+```bash
+mousecrack move 200 400 lite # or standard
+mousecrack steps 100 200 200 400 lite # or standard
+```
+
+And with the SDK:
+
+```js
+import { ModelType, move, steps } from 'mousecrack';
+
+await move(200, 400, ModelType.LITE);
+await steps(from, to, ModelType.LITE);
+```
+
+> [!CAUTION]
+> **Lite** is not recommended, unless your hardware forces you to.
+> 
+> It performs inference, on average, 29% faster, but the end-to-end generation time can take up to 8x as long.
+>
+> This is because the smaller model tends to veer off course more often.
+
 ---
 
 ### How does it work?
